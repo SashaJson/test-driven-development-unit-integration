@@ -11,10 +11,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SashaJson/test-driven-development-unit-integratio.git"
+    "url": "git+https://github.com/SashaJson/test-driven-development-unit-integration.git"
   },
   "bugs": {
-    "url": "https://github.com/SashaJson/test-driven-development-unit-integratio/issues"
+    "url": "https://github.com/SashaJson/test-driven-development-unit-integration/issues"
   },
-  "homepage": "https://github.com/SashaJson/test-driven-development-unit-integratio#readme"
+  "homepage": "https://github.com/SashaJson/test-driven-development-unit-integration#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
