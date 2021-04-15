@@ -1,0 +1,20 @@
+{
+  "name": "tdd-unit-integration",
+  "version": "1.0.0",
+  "description": "develop app in TDD, use Nodejs, Express and unit-integration tests with Jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sasha Shulha (sashamiller666@gmail.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SashaJson/test-driven-development-unit-integratio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SashaJson/test-driven-development-unit-integratio/issues"
+  },
+  "homepage": "https://github.com/SashaJson/test-driven-development-unit-integratio#readme"
+}
