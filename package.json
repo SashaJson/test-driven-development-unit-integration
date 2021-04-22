@@ -4,7 +4,7 @@
   "description": "develop app in TDD, use Nodejs, Express and unit-integration tests with Jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest "
+    "test": "jest"
   },
   "keywords": [],
   "author": "Sasha Shulha (sashamiller666@gmail.com)",
