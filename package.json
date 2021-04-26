@@ -4,7 +4,7 @@
   "description": "develop app in TDD, use Nodejs, Express and unit-integration tests with Jest",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "Sasha Shulha (sashamiller666@gmail.com)",
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/SashaJson/test-driven-development-unit-integration#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.5"
   },
   "devDependencies": {
     "jest": "^26.6.3"
