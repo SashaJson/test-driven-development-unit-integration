@@ -17,16 +17,25 @@ beforeEach(() => {
 
 describe('TodoController.createTodo', () => {
 
-    it('should have a createTodo function', async () => {
+    it('should have a createTodo function', () => {
 
        expect(typeof TodoController.createTodo).toBe('function');
 
     });
 
-    it('should call TodoModel.create', async () => {
+    it('should call TodoModel.create',() => {
         req.body = newTodo;
         TodoController.createTodo(req, res, next);
         expect(TodoModel.create).toBeCalledWith(newTodo);
+
+    });
+
+    it('should return 201 response code', () => {
+
+        req.body = newTodo;
+        TodoController.createTodo(req, res, next);
+        expect(res.statusCode).toBe(201);
+        expect(res._isEndCalled()).toBeTruthy();
 
     });
 
