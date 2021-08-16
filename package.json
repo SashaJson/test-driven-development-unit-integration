@@ -23,7 +23,8 @@
   "homepage": "https://github.com/SashaJson/test-driven-development-unit-integration#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.13.7"
+    "mongoose": "^5.13.7",
+    "node-mocks-http": "^1.10.1"
   },
   "devDependencies": {
     "jest": "^27.0.6"
