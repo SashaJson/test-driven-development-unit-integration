@@ -2,11 +2,18 @@
   "name": "tdd-unit-integration",
   "version": "1.0.0",
   "description": "develop app in TDD, use Nodejs, Express and unit-integration tests with Jest",
-  "main": "index.js",
   "scripts": {
     "test": "jest --watchAll"
   },
-  "keywords": [],
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "tdd",
+    "express",
+    "jest",
+    "test"
+  ],
   "author": "Sasha Shulha (sashamiller666@gmail.com)",
   "license": "ISC",
   "repository": {
