@@ -1,7 +1,7 @@
 'use strict';
 
 const TodoController = require('../../controllers/todo.controller');
-const TodoModel = require('../../model/todo.mode');
+const TodoModel = require('../../model/todo.model');
 
 TodoModel.create = jest.fn();
 
@@ -16,7 +16,7 @@ describe('TodoController.createTodo', () => {
     it('should call TodoModel.create', async () => {
 
         TodoController.createTodo();
-        expect(TodoModel.create()).toBeCalled();
+        expect(TodoModel.create).toBeCalled();
 
     });
 
