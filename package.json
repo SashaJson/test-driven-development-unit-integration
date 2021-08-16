@@ -5,9 +5,6 @@
   "scripts": {
     "test": "jest --watchAll"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "keywords": [
     "tdd",
     "express",
