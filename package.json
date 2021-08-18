@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "develop app in TDD, use Nodejs, Express and unit-integration tests with Jest",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "keywords": [
     "tdd",
@@ -27,6 +27,7 @@
     "node-mocks-http": "^1.10.1"
   },
   "devDependencies": {
+    "dotenv": "^10.0.0",
     "jest": "^27.0.6",
     "supertest": "^6.1.5"
   }
