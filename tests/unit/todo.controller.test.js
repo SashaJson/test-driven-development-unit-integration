@@ -8,6 +8,7 @@ const newTodo = require('../mock-data/new-todo.json');
 TodoModel.create = jest.fn();
 
 let req, res, next;
+const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
 
 beforeEach(() => {
     req = httpMocks.createRequest();
@@ -30,19 +31,18 @@ describe('TodoController.createTodo', () => {
 
     });
 
-    it('should return 201 response code', () => {
+    it('should return 201 response code',async () => {
 
-        req.body = newTodo;
-        TodoController.createTodo(req, res, next);
-        expect(res.statusCode).toBe(201);
+        await TodoController.createTodo(req, res, next);
+        expect(res.statusCode).toBe(HTTP_CODE_201_OF_REQUEST_SUCCEEDED);
         expect(res._isEndCalled()).toBeTruthy();
 
     });
 
-    it('should return json body in response', () => {
+    it('should return json body in response',async () => {
 
         TodoModel.create.mockReturnValue(newTodo);
-        TodoController.createTodo(req, res, next);
+        await TodoController.createTodo(req, res, next);
         expect(res._getJSONData()).toStrictEqual(newTodo);
 
     });

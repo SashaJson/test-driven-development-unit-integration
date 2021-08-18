@@ -5,6 +5,7 @@ const app = require('../../app');
 const newTodo = require('../mock-data/new-todo.json');
 
 const ENDPOINT_URL = '/todos/';
+const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
 
 describe(ENDPOINT_URL, () => {
 
@@ -14,7 +15,7 @@ describe(ENDPOINT_URL, () => {
             .post(ENDPOINT_URL)
             .send(newTodo);
 
-       expect(response.statusCode).toBe(201);
+       expect(response.statusCode).toBe(HTTP_CODE_201_OF_REQUEST_SUCCEEDED);
        expect(response.body.title).toBe(newTodo.title);
        expect(response.body.done).toBe(newTodo.done);
 
