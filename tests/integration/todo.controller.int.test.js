@@ -21,4 +21,14 @@ describe(ENDPOINT_URL, () => {
 
     });
 
+    it('should return error 500 on malformed data with POST' + ENDPOINT_URL, async () => {
+
+        const response = await request(app)
+            .post(ENDPOINT_URL)
+            .send({ title: 'Missing done property' });
+
+        expect(response.statusCode).toBe(500);
+
+    });
+
 });
