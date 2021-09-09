@@ -9,6 +9,16 @@ const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
 
 describe(ENDPOINT_URL, () => {
 
+    it('GET' + ENDPOINT_URL, async () => {
+
+        const response = await request(app).get(ENDPOINT_URL);
+        expect(response.statusCode).toBe(200);
+        expect(Array.isArray(response.body)).toBeTruthy();
+        expect(response.body[0].title).toBeDefined();
+        expect(response.body[0].done).toBeDefined();
+
+    });
+
     it('POST' + ENDPOINT_URL, async () => {
 
        const response = await request(app)

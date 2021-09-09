@@ -21,28 +21,39 @@ beforeEach(() => {
 describe('TodoController.getTodos', () => {
 
     it('should have a getTodos function', () => {
+
         expect(typeof TodoController.getTodos).toBe('function');
+
     });
 
     it('should call TodoModel.find({})', async () => {
+
         await TodoController.getTodos(req, res, next);
         expect(TodoModel.find).toHaveBeenCalledWith({});
+
     });
 
     it('should return response with status 200 and all todos', async () => {
+
         TodoModel.find.mockReturnValue(allTodos);
+
         await TodoController.getTodos(req, res, next);
         expect(res.statusCode).toBe(200);
         expect(res._isEndCalled()).toBeTruthy();
         expect(res._getJSONData()).toStrictEqual(allTodos);
+
     });
 
     it('should handle errors in getTodos', async () => {
+
         const errorMessage = { message: 'Error finding' };
+
         const rejectPromise = Promise.reject(errorMessage);
         TodoModel.find.mockReturnValue(rejectPromise);
+
         await TodoController.getTodos(req, res, next);
         expect(next).toHaveBeenCalledWith(errorMessage);
+
     });
 
 });
@@ -56,6 +67,7 @@ describe('TodoController.createTodo', () => {
     });
 
     it('should call TodoModel.create',() => {
+
         req.body = newTodo;
         TodoController.createTodo(req, res, next);
         expect(TodoModel.create).toBeCalledWith(newTodo);
@@ -73,18 +85,22 @@ describe('TodoController.createTodo', () => {
     it('should return json body in response',async () => {
 
         TodoModel.create.mockReturnValue(newTodo);
+
         await TodoController.createTodo(req, res, next);
         expect(res._getJSONData()).toStrictEqual(newTodo);
 
     });
 
     it('should handle errors', async () => {
+
         const errorMessage = { message: 'Done property missing' };
         const rejectPromise = Promise.reject(errorMessage);
 
         TodoModel.create.mockReturnValue(rejectPromise);
+
         await TodoController.createTodo(req, res, next);
         expect(next).toBeCalledWith(errorMessage);
+
     });
 
 }); // describe (TodoController.createTodo)
