@@ -8,6 +8,7 @@ const allTodos = require('../mock-data/all-todos.json');
 
 TodoModel.create = jest.fn();
 TodoModel.find = jest.fn();
+TodoModel.findById = jest.fn();
 
 let req, res, next;
 const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
@@ -23,6 +24,14 @@ describe('TodoController.getTodoById', () => {
     it('should have a getTodoById', () => {
 
         expect(typeof TodoController.getTodoById).toBe('function');
+
+    });
+
+    it('should call TodoModel.findById with route parameters', async () => {
+
+        req.params.todoId = '5';
+        await TodoController.getTodoById(req, res, next);
+        expect(TodoModel.findById).toBeCalledWith('5');
 
     });
 
