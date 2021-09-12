@@ -7,6 +7,8 @@ const newTodo = require('../mock-data/new-todo.json');
 const ENDPOINT_URL = '/todos/';
 const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
 
+let firstTodo;
+
 describe(ENDPOINT_URL, () => {
 
     it('GET' + ENDPOINT_URL, async () => {
@@ -16,6 +18,18 @@ describe(ENDPOINT_URL, () => {
         expect(Array.isArray(response.body)).toBeTruthy();
         expect(response.body[0].title).toBeDefined();
         expect(response.body[0].done).toBeDefined();
+
+        firstTodo = response.body[0];
+
+    });
+
+    it('GET by Id ' + ENDPOINT_URL + ':todoId', async () => {
+
+        const response = await request(app).get(ENDPOINT_URL + firstTodo._id);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.title).toBe(firstTodo.title);
+        expect(response.body.done).toBe(firstTodo.done);
 
     });
 
