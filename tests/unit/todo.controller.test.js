@@ -46,7 +46,7 @@ describe('TodoController.getTodoById', () => {
 
     });
 
-    it('should do error handling', () => {
+    it('should do error handling', async () => {
 
         const errorMessage = { message: 'error finding todoModel' };
 
