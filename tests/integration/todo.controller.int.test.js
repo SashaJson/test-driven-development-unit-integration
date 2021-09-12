@@ -33,6 +33,16 @@ describe(ENDPOINT_URL, () => {
 
     });
 
+    it('GET todoBy id does not exist' + ENDPOINT_URL + ':todoId', async () => {
+
+       const response = await request(app).get(
+           ENDPOINT_URL + '611d3beb3d30a0879a00a000'
+       );
+
+       expect(response.statusCode).toBe(404);
+
+    });
+
     it('POST' + ENDPOINT_URL, async () => {
 
        const response = await request(app)
