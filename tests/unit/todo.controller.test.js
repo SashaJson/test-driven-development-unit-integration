@@ -46,6 +46,18 @@ describe('TodoController.getTodoById', () => {
 
     });
 
+    it('should do error handling', () => {
+
+        const errorMessage = { message: 'error finding todoModel' };
+
+        const rejectedPromise = Promise.reject(errorMessage);
+        TodoModel.findById.mockReturnValue(rejectedPromise);
+
+        await TodoController.getTodoById(req, res, next);
+        expect(next).toHaveBeenCalledWith(errorMessage);
+
+    });
+
 });
 
 describe('TodoController.getTodos', () => {
