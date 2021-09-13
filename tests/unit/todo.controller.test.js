@@ -58,6 +58,15 @@ describe('TodoController.deleteTodo', () => {
 
     });
 
+    it('should handle 404', async () => {
+
+        TodoModel.findByIdAndDelete.mockReturnValue(null);
+
+        await TodoController.deleteTodo(req, res, next);
+        expect(res.statusCode).toBe(404);
+
+    });
+
 }); // TodoController.deleteTodo
 
 describe('TodoController.updateTodo', () => {
