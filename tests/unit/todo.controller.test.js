@@ -66,6 +66,16 @@ describe('TodoController.updateTodo', () => {
 
     });
 
+    it('should return 404 when item does not exist', async () => {
+
+       TodoModel.findByIdAndUpdate.mockReturnValue(null);
+
+       await TodoController.updateTodo(req, res, next);
+       expect(res.statusCode).toBe(404);
+       expect(res._isEndCalled()).toBeTruthy();
+
+    });
+
 }); // TodoController.updateTodo
 
 describe('TodoController.getTodoById', () => {
