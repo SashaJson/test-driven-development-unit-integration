@@ -46,6 +46,18 @@ describe('TodoController.deleteTodo', () => {
 
     });
 
+    it('should handle errors', async () => {
+
+        const errorMessage = { message: 'Error deleting' };
+
+        const rejectedPromise = Promise.reject(errorMessage);
+        TodoModel.findByIdAndDelete.mockReturnValue(rejectedPromise);
+
+        await TodoController.deleteTodo(req, res, next);
+        expect(next).toHaveBeenCalledWith(errorMessage);
+
+    });
+
 }); // TodoController.deleteTodo
 
 describe('TodoController.updateTodo', () => {
