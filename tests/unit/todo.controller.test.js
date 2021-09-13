@@ -18,6 +18,25 @@ beforeEach(() => {
     next = jest.fn();
 });
 
+describe('TodoController.deleteTodo', () => {
+
+    it('should have a deleteTodo function', () => {
+
+        expect(typeof TodoController.deleteTodo).toBe('function');
+
+    });
+
+    it('should call findByIdAndDelete', async () => {
+
+        req.params.todoId = TODO_ID;
+
+        await TodoController.deleteTodo(req, res, next);
+        expect(TodoModel.findByIdAndDelete).toBeCalledWith(TODO_ID);
+
+    });
+
+}); // TodoController.deleteTodo
+
 describe('TodoController.updateTodo', () => {
 
     it('should have a updateTodo function', () => {

@@ -49,3 +49,7 @@ exports.updateTodo = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.deleteTodo = async (req, res, next) => {
+    TodoModel.findByIdAndDelete(req.params.todoId);
+};
