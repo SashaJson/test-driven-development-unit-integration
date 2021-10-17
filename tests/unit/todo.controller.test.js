@@ -8,9 +8,13 @@ const allTodos = require('../mock-data/all-todos.json');
 
 jest.mock('../../model/todo.model');
 
-let req, res, next;
-const HTTP_CODE_201_OF_REQUEST_SUCCEEDED = 201;
+const HTTP_CODE_200_OK = 200;
+const HTTP_CODE_201_OF_CREATED = 201;
+const HTTP_CODE_404_OF_NOT_FOUND = 404;
+
 const TODO_ID = '5';
+
+let req, res, next;
 
 beforeEach(() => {
     req = httpMocks.createRequest();
@@ -40,7 +44,7 @@ describe('TodoController.deleteTodo', () => {
         TodoModel.findByIdAndDelete.mockReturnValue(newTodo);
 
         await TodoController.deleteTodo(req, res, next);
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(HTTP_CODE_200_OK);
         expect(res._getJSONData()).toStrictEqual(newTodo);
         expect(res._isEndCalled()).toBeTruthy();
 
@@ -63,7 +67,7 @@ describe('TodoController.deleteTodo', () => {
         TodoModel.findByIdAndDelete.mockReturnValue(null);
 
         await TodoController.deleteTodo(req, res, next);
-        expect(res.statusCode).toBe(404);
+        expect(res.statusCode).toBe(HTTP_CODE_404_OF_NOT_FOUND);
         expect(res._isEndCalled()).toBeTruthy();
 
     });
@@ -98,7 +102,7 @@ describe('TodoController.updateTodo', () => {
 
         await TodoController.updateTodo(req, res, next);
         expect(res._isEndCalled()).toBeTruthy();
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(HTTP_CODE_200_OK);
         expect(res._getJSONData()).toStrictEqual(newTodo);
 
     });
@@ -120,7 +124,7 @@ describe('TodoController.updateTodo', () => {
        TodoModel.findByIdAndUpdate.mockReturnValue(null);
 
        await TodoController.updateTodo(req, res, next);
-       expect(res.statusCode).toBe(404);
+       expect(res.statusCode).toBe(HTTP_CODE_404_OF_NOT_FOUND);
        expect(res._isEndCalled()).toBeTruthy();
 
     });
@@ -148,7 +152,7 @@ describe('TodoController.getTodoById', () => {
         TodoModel.findById.mockReturnValue(newTodo);
 
         await TodoController.getTodoById(req, res, next);
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(HTTP_CODE_200_OK);
         expect(res._getJSONData()).toStrictEqual(newTodo);
         expect(res._isEndCalled()).toBeTruthy();
 
@@ -188,7 +192,7 @@ describe('TodoController.getTodos', () => {
         TodoModel.find.mockReturnValue(allTodos);
 
         await TodoController.getTodos(req, res, next);
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(HTTP_CODE_200_OK);
         expect(res._isEndCalled()).toBeTruthy();
         expect(res._getJSONData()).toStrictEqual(allTodos);
 
@@ -211,7 +215,7 @@ describe('TodoController.getTodos', () => {
         TodoModel.findById.mockReturnValue(null);
 
         await TodoController.getTodoById(req, res, next);
-        expect(res.statusCode).toBe(404);
+        expect(res.statusCode).toBe(HTTP_CODE_404_OF_NOT_FOUND);
         expect(res._isEndCalled()).toBeTruthy();
 
     });
@@ -237,7 +241,7 @@ describe('TodoController.createTodo', () => {
     it('should return 201 response code',async () => {
 
         await TodoController.createTodo(req, res, next);
-        expect(res.statusCode).toBe(HTTP_CODE_201_OF_REQUEST_SUCCEEDED);
+        expect(res.statusCode).toBe(HTTP_CODE_201_OF_CREATED);
         expect(res._isEndCalled()).toBeTruthy();
 
     });
